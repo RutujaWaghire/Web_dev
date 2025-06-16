@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Javascript </title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .calculator {
+            border: 1px solid rgb(23, 18, 18);
+            width: 300px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .input-num {
+            width: 100%;
+            font-size: 20px;
+            margin: 10px 0;
+            padding: 5px;
+            outline: none;
+        }
+        .btn {
+            width: 40%;
+            font-size: 18px;
+            border-radius: 30px;
+            border: none;
+            color: aliceblue;
+            cursor: pointer;
+            padding: 10px;
+        }
+        .btn-cal {
+            background-color: blueviolet;
+        }
+        .btn-reset {
+            background-color: rgb(108, 140, 239);
+            margin-right: 10px;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .text-result {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <h1>Sum of Two Numbers</h1>
+            <input type="number" class="input-num" id="input1" placeholder="Enter first number"/>
+            <input type="number" class="input-num" id="input2" placeholder="Enter second number"/>
+            <p id="result" class="text-result">-</p>
+            <div class="btn-group">
+                <button class="btn btn-reset" onclick="reset()">Reset</button>
+                <button class="btn btn-cal" onclick="sum()">Sum</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function sum() {
+            const input1Element = document.getElementById("input1");
+            const input2Element = document.getElementById("input2");
+            const resultElement = document.getElementById("result");
+
+            const num1 = input1Element.value;
+            if (num1 === "") {
+                alert("Please enter the first number");
+                return;
+            }
+
+            const num2 = input2Element.value;
+            if (num2 === "") {
+                alert("Please enter the second number");
+                return;
+            }
+
+            const total = parseFloat(num1) + parseFloat(num2);
+            resultElement.innerText = `Sum: ${total}`;
+        }
+
+        function reset() {
+            document.getElementById("input1").value = "";
+            document.getElementById("input2").value = "";
+            document.getElementById("result").innerText = "-";
+        }
+    </script>
+</body>
+</html>

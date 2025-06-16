@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Translator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+        h2 {
+            color: #333;
+        }
+        input, select {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #796d83;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+        button:hover {
+            background: #0a424a;
+        }
+        .translation {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f1f1f1;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Word Translator</h2>
+        <input type="text" id="wordInput" placeholder="Enter English word">
+        <select id="languageSelect">
+            <option value="French">French</option>
+            <option value="Spanish">Spanish</option>
+            <option value="German">German</option>
+        </select>
+        <button onclick="translateWord()">Translate</button>
+        <div class="translation" id="translationResult"></div>
+    </div>
+    <script>
+        function translateWord() {
+            const word = document.getElementById("wordInput").value.trim().toLowerCase();
+            const language = document.getElementById("languageSelect").value;
+            const resultBox = document.getElementById("translationResult");
+            
+            if (word === "") {
+                resultBox.innerHTML = "<p style='color: red;'>Please enter a word.</p>";
+                return;
+            }
+            
+            const translations = {
+                "hello": { "French": "Bonjour", "Spanish": "Hola", "German": "Hallo" },
+                "thank you": { "French": "Merci", "Spanish": "Gracias", "German": "Danke" },
+                "goodbye": { "French": "Au revoir", "Spanish": "Adiós", "German": "Auf Wiedersehen" },
+                "please": { "French": "S'il vous plaît", "Spanish": "Por favor", "German": "Bitte" }
+            };
+            
+            resultBox.innerHTML = translations[word] && translations[word][language] 
+                ? `<p><strong>${translations[word][language]}</strong></p>`
+                : "<p style='color: red;'>Translation not available.</p>";
+        }
+    </script>
+</body>
+</html>

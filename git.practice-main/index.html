@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Bat Product Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .product-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .product-image {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .product-title {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        .price {
+            color: #28a745;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .quantity-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 15px 0;
+        }
+        .quantity-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .quantity-btn:disabled {
+            background: gray;
+        
+        }
+        .quantity {
+            margin: 0 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="product-card">
+        <img src="image.png" alt="Cricket Bat" class="product-image">
+        <h2 class="product-title">Virat Kohli Cricket Bat</h2>
+        <p class="price">$180</p>
+        <div class="quantity-container">
+            <button class="quantity-btn" id="decrement">-</button>
+            <span class="quantity" id="quantity">1</span>
+            <button class="quantity-btn" id="increment">+</button>
+        </div>
+    </div>
+    
+    <script>
+        const quantitySpan = document.getElementById("quantity");
+        const incrementBtn = document.getElementById("increment");
+        const decrementBtn = document.getElementById("decrement");
+
+        let quantity = 1;
+
+        incrementBtn.addEventListener("click", () => {
+            quantity++;
+            quantitySpan.textContent = quantity;
+            decrementBtn.disabled = false;
+        }
+    );
+
+        decrementBtn.addEventListener("click", () => {
+            if (quantity > 1) {
+                quantity--;
+                quantitySpan.textContent = quantity;
+            }
+            if (quantity === 1) {
+                decrementBtn.disabled = true;
+            }
+        }
+    );
+
+        decrementBtn.disabled = true;
+    </script>
+</body>
+</html>
